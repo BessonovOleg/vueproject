@@ -25,7 +25,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      mytxt: 'this is my text'
+      mytxt: 'my text'
     }
   }
 }
