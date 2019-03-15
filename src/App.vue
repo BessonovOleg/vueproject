@@ -1,20 +1,30 @@
 <template>
   <div id="app">
-    <promotion></promotion>
-    <entcard></entcard>
+    <period v-if="showperiod" @close="closedialog"></period>
+    <button @click="showperiod = !showperiod">Show</button>
+    <p>showPeriod = {{showperiod}}</p>
   </div>
 </template>
 
 <script>
-import promotion from './components/promotion.vue'
-import entcard from './components/entcard.vue'
+import period from './components/period.vue'
+import throttle from './components/throttle.js'
+
 export default {
-  components:{promotion,entcard},
+components:{period},
   name: 'app',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      mytxt: 'my text'
+      showperiod:false
+    }
+  },
+  methods:{
+    closedialog(){
+      setTimeout(()=>{this.setvis()},500);
+    },
+    setvis(){
+        this.showperiod = false;
     }
   }
 }
