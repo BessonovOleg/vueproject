@@ -1,22 +1,27 @@
 <template>
-  <div id="app">
-    <period v-if="showperiod" @close="closedialog"></period>
-    <button @click="showperiod = !showperiod">Show</button>
-    <p>showPeriod = {{showperiod}}</p>
-  </div>
+  <v-app id="app">
+    <v-layout>
+        <period v-if="showperiod" @close="closedialog"></period>
+        <v-btn @click="btntest">Период</v-btn>
+        {{showperiod}}
+
+        <v-switch v-model="sw" :label="Ops"></v-switch>
+    </v-layout>
+  </v-app>
 </template>
 
 <script>
-import period from './components/period.vue'
-import throttle from './components/throttle.js'
-
+import period from './components/periodv2.vue'
 export default {
-components:{period},
-  name: 'app',
+  name: 'App',
+  components: {
+    period
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      showperiod:false
+      showperiod:false,
+      radios:'m3',
+      sw:''
     }
   },
   methods:{
@@ -24,7 +29,11 @@ components:{period},
       setTimeout(()=>{this.setvis()},500);
     },
     setvis(){
-        this.showperiod = false;
+      this.showperiod = false;
+    },
+    btntest(){
+      console.log("!!!!!!");
+      this.showperiod = !this.showperiod;
     }
   }
 }
